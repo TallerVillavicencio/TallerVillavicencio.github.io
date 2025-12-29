@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller Villavicencio | Maquinaria Pesada y Automotriz</title>
+    
+    <link rel="icon" href="logotv.png" type="image/png">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIABLES Y RESET --- */
+        :root {
+            --primary-yellow: #dca500; /* Amarillo estilo maquinaria */
+            --dark-bg: #111111;
+            --card-bg: #1e1e1e;
+            --text-light: #f5f5f5;
+            --text-gray: #b0b0b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- HEADER & NAV --- */
+        header {
+            background-color: rgba(17, 17, 17, 0.95);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--primary-yellow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 60px; /* Ajustar según tu imagen */
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-yellow);
+        }
+
+        /* Botón de contacto en Nav */
+        .btn-nav {
+            background-color: var(--primary-yellow);
+            color: #000;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://maestranzaramos.cl/wp-content/uploads/2022/08/15.jpg'); /* Imagen de fondo genérica de taller */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            color: var(--primary-yellow);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn-cta {
+            background-color: var(--primary-yellow);
+            color: #000;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            border-radius: 5px;
+            transition: transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-cta:hover {
+            transform: scale(1.05);
+            background-color: #ffcc00;
+        }
+
+        /* --- SERVICIOS --- */
+        .services {
+            padding: 5rem 10%;
+            background-color: #161616;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            border-bottom: 4px solid var(--primary-yellow);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid #333;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-yellow);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-yellow);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        /* --- GALERÍA (Estilo Instagram) --- */
+        .gallery {
+            padding: 5rem 5%;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            height: 300px;
+            background-color: #333;
+            overflow: hidden;
+            position: relative;
+            border-radius: 8px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- CONTACTO Y UBICACIÓN --- */
+        .contact {
+            background-color: var(--card-bg);
+            padding: 5rem 10%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            transition: color 0.3s; /* Animación suave al pasar el mouse */
+        }
+
+        /* Estilo especial para cuando es un enlace */
+        a.contact-item:hover {
+            color: var(--primary-yellow);
+            cursor: pointer;
+        }
+
+        .contact-item i {
+            color: var(--primary-yellow);
+            font-size: 1.5rem;
+        }
+
+        .map-container {
+            flex: 1;
+            min-width: 300px;
+            height: 350px;
+            background-color: #333;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #000;
+            padding: 2rem;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #333;
+        }
+
+        /* WHATSAPP FLOTANTE */
+        .float-wa {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .float-wa:hover {
+            background-color: #20b85a;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* En una versión real agregarías menú hamburguesa */
+            .contact { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="logotv.png" alt="Logo Taller Villavicencio" class="logo-img">
+            <div>
+                <h3 style="font-weight:900; line-height:1;">VILLAVICENCIO</h3>
+                <small style="color:var(--primary-yellow); letter-spacing:1px; font-size: 0.7rem;">MAQUINARIA PESADA Y AUTOMOTRIZ</small>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#galeria">Trabajos</a>
+            <a href="#contacto" class="btn-nav">Contacto</a>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <h1>Expertos en <br><span>Mecánica Pesada</span></h1>
+        <p>Soluciones integrales para maquinaria pesada y vehículos automotrices. Servicio fijo en El Monte y taller móvil a terreno.</p>
+        <a href="https://wa.me/56971780752?text=Hola!,%20me%20interesaron%20los%20servicios." class="btn-cta">
+            <i class="fab fa-whatsapp"></i> Cotizar Ahora
+        </a>
+    </section>
+
+    <section id="servicios" class="services">
+        <div class="section-title">
+            <h2>Nuestros Servicios</h2>
+            <p style="color:var(--text-gray)">Calidad y confianza en cada reparación</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-truck-monster service-icon"></i>
+                <h3>Maquinaria Pesada</h3>
+                <p>Mantenimiento preventivo y correctivo para excavadoras, retroexcavadoras y maquinaria industrial. Diagnóstico especializado.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-car-side service-icon"></i>
+                <h3>Mecánica Automotriz</h3>
+                <p>Servicio completo para vehículos livianos y camionetas. Ajustes de motor, frenos, suspensión y diagnóstico por scanner.</p>
+            </div>
+
+            <div class="service-card">
+                <i class="fas fa-tools service-icon"></i>
+                <h3>Taller Móvil</h3>
+                <p>¿Tu máquina quedó en panne? Vamos donde estés. Contamos con unidad móvil equipada para reparaciones en terreno.</p>
+            </div>
+
+             <div class="service-card">
+                <i class="fas fa-cogs service-icon"></i>
+                <h3>Mantención de Flotas</h3>
+                <p>Planes especiales para empresas. Asegura la continuidad operativa de tus equipos con nuestros planes de mantenimiento.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="gallery">
+        <div class="section-title">
+            <h2>En el Taller</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1504222490245-4882c6a8585e?q=80&w=2000" alt="Taller 1"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?q=80&w=2000" alt="Motor"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=2000" alt="Herramientas"></div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <div class="contact-info">
+            <div class="section-title" style="text-align: left;">
+                <h2>Contáctanos</h2>
+            </div>
+            <p style="margin-bottom: 2rem; color: #ccc;">Estamos ubicados en la zona de El Monte. Agenda tu visita o solicita asistencia en ruta.</p>
+            
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Chiñihue los Quilos, El Monte, RM.</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <span>+56 9 7178 0752</span>
+            </div>
+            
+            <a href="https://www.instagram.com/taller_villavicencio" target="_blank" class="contact-item">
+                <i class="fab fa-instagram"></i>
+                <span>@taller_villavicencio</span>
+            </a>
+
+            <div class="contact-item">
+                <i class="fas fa-clock"></i>
+                <span>Lunes a Viernes: 09:00 - 17:00</span>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53105.57688534724!2d-71.04789569055862!3d-33.68265434460777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662ded9b542866b%3A0x678762514115e518!2sEl%20Monte%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1708300000000!5m2!1ses!2scl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Taller Villavicencio. Todos los derechos reservados.</p>
+    </footer>
+
+    <a href="https://wa.me/56971780752?text=Hola!,%20me%20interesaron%20los%20servicios." class="float-wa" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
