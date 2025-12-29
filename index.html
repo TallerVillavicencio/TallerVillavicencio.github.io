@@ -27,6 +27,10 @@
             font-family: 'Roboto', sans-serif;
         }
 
+        .font-weight-bold {
+        font-weight: 700 !important;
+        }
+
         body {
             background-color: var(--dark-bg);
             color: var(--text-light);
@@ -408,12 +412,18 @@
     </section>
 
     <footer>
-        <p>© 2026 Taller Villavicencio. Todos los derechos reservados.</p>
+        <p> &copy; <span id="year"></span> <a class="font-weight-bold">Taller Villavicencio</a>. Todos los derechos reservados. Diseñado por
+            <a class="font-weight-bold" href="https://www.linkedin.com/company/maxivisionspa/">MaxiVision</a>
+        </p>
     </footer>
 
     <a href="https://wa.me/56971780752?text=Hola!,%20me%20interesaron%20los%20servicios." class="float-wa" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    
 </body>
 </html>
